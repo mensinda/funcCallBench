@@ -36,6 +36,10 @@ void BM_sharedVirtCall_TAG(benchmark::State& state) {
     delete obj;
 }
 
+void dummyFn_TAG() {
+    std::string tmp{"foo"};
+}
+
 BENCHMARK(BM_fnCall_TAG)->Name("call       TAG_DISP");
 BENCHMARK(BM_sharedCall_TAG)->Name("sharedCall TAG_DISP");
 BENCHMARK(BM_virtCall_TAG)->Name("virtCall   TAG_DISP");

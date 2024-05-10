@@ -1,18 +1,22 @@
 #include "bench_TAG.hpp"
 
-class BM_cls_TAG : public BM_base_TAG {
-  public:
-    BM_cls_TAG()          = default;
-    virtual ~BM_cls_TAG() = default;
+BM_base_TAG::BM_base_TAG() {}
 
-    virtual NO_INLINE void virtCall();
-};
+BM_base_TAG::~BM_base_TAG() {}
 
 void BM_base_TAG::virtCall() {
     // g_TAG += 1;
     // DO_NOT_OPTIMIZE(g_TAG);
 }
 
+
+class BM_cls_TAG : public BM_base_TAG {
+  public:
+    BM_cls_TAG() = default;
+    virtual ~BM_cls_TAG(){};
+
+    virtual NO_INLINE void virtCall();
+};
 
 void BM_cls_TAG::virtCall() {
     // g_TAG += 6;

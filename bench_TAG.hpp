@@ -16,8 +16,8 @@ extern uint32_t g_TAG;
 
 class BM_base_TAG {
   public:
-    BM_base_TAG()          = default;
-    virtual ~BM_base_TAG() = default;
+    BM_base_TAG();
+    virtual ~BM_base_TAG();
 
     virtual void virtCall();
 };

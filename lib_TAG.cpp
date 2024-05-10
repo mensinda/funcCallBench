@@ -4,8 +4,8 @@
 
 class BM_shared_TAG : public BM_base_TAG {
   public:
-    BM_shared_TAG()          = default;
-    virtual ~BM_shared_TAG() = default;
+    BM_shared_TAG() = default;
+    virtual ~BM_shared_TAG(){};
 
     virtual void virtCall() override;
 };
