@@ -28,7 +28,7 @@ tar -xf $GZ_FILE
 
 pushd benchmark-$VERS
 
-cmake -S . -B build -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON -DCMAKE_BUILD_TYPE=Release -G Ninja
+cmake -S . -B build -DBENCHMARK_DOWNLOAD_DEPENDENCIES=ON -DBENCHMARK_ENABLE_TESTING=OFF -DCMAKE_BUILD_TYPE=Release -G Ninja
 cmake --build "build" --config Release
 
 popd
