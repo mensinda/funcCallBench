@@ -4,6 +4,12 @@ set -e
 
 cd "$(dirname "$0")"
 
+if [[ $(uname -m) == 'x86_64' ]]; then
+    HARDEN_FLAGS='-Wp,-D_FORTIFY_SOURCE=3 -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer'
+else
+    HARDEN_FLAGS='-Wp,-D_FORTIFY_SOURCE=3 -fstack-clash-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer'
+fi
+
 BASE_FLAGS="-Wextra -Ibenchmark/include -std=c++23 -fPIC"
 BASE_LINK_FLAGS="-Lbenchmark/lib -Llib -lbenchmark -lbenchmark_main -Wl,-rpath=lib"
 
@@ -113,7 +119,7 @@ for opt in O1 O2 O3; do
                 (( $plt == 0 )) && plt_flag='-fno-plt'
 
                 harden_flags=''
-                (( $harden == 1 )) && harden_flags='-Wp,-D_FORTIFY_SOURCE=3 -fstack-clash-protection -fcf-protection -fno-omit-frame-pointer -mno-omit-leaf-frame-pointer'
+                (( $harden == 1 )) && harden_flags="$HARDEN_FLAGS"
 
                 patch_flag="-fpatchable-function-entry=${nops//_/,}"
 
