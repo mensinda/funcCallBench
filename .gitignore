@@ -38,6 +38,7 @@
 /build*
 !build.sh
 /include
+/main
 *.S
 
 /result*
